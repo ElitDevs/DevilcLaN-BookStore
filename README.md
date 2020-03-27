@@ -18,7 +18,7 @@
         [ ] install nestjscli 
         [ ] install typeorm ts-node pg 
         [ ] create database 
-        [ ] add typeOrm & create .env file to add what typeOrm needs to work
+        [ ] add typeOrm & create ormconfig.json file to add what typeOrm needs to work (go back to nestjs and see how to do it)
         [ ] create the main components (books, users, authors, categories) 
             [ ] install passportjs with jwt strategy
             [ ] create authentication process
