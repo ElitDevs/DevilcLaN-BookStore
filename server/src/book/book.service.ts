@@ -45,8 +45,8 @@ export class BookService {
         if(!book){
             throw new HttpException('Not Found', HttpStatus.BAD_REQUEST);
         }
-        this.bookRepository.delete(book);
-        return book;
+        this.bookRepository.remove(book);
+        return true;
     }
 
 }
