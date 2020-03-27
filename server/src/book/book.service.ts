@@ -31,7 +31,7 @@ export class BookService {
         return book;
     }
 
-    async update(id: string, data: BookDto):Promise<BookEntity>{
+    async update(id: string, data: Partial<BookDto>):Promise<BookEntity>{
         const book = await this.bookRepository.findOne({id});
         if(!book){
             throw new HttpException('Not Found', HttpStatus.BAD_REQUEST);
