@@ -14,23 +14,27 @@ export class CategoryController {
 
     @Get(':id')
     getOne(@Param('id') id: number){
+        this.logger.log(JSON.stringify(id));
         return "return category with id : "+id
     }
 
 
     @Post()
     post(@Body() data : CategoryDto){
+        this.logger.log(JSON.stringify(data));
         return "create new category"
     }
 
 
     @Put(':id')
     update(@Param("id") id: number, @Body() data : CategoryDto){
+        this.logger.log(JSON.stringify(data));
         return "update existing category with id "+ id;
     }
 
     @Delete(':id')
     destroy(@Param('id') id : number){
+        this.logger.log(JSON.stringify(id));
         return  "destroy a category with id "+id;
     }
 
