@@ -4,7 +4,11 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
+  OneToMany,
 } from 'typeorm';
+import { BookEntity } from './../book/book.entity';
+ 
 
 @Entity('Category')
 export class CategoryEntity {
@@ -15,4 +19,8 @@ export class CategoryEntity {
   @CreateDateColumn() createdAt: Date;
 
   @UpdateDateColumn() updatedAt: Date;
+
+
+ @OneToMany(type => BookEntity , book=>book.categories)
+ book : BookEntity
 }

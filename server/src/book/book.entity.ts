@@ -5,8 +5,12 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm';
 import { AuthorEntity } from 'src/author/author.entity';
+import { type } from 'os';
+import { CategoryEntity } from './../category/category.entity';
 
 @Entity('Book')
 export class BookEntity {
@@ -28,9 +32,13 @@ export class BookEntity {
 
   @UpdateDateColumn() updatedAt: Date;
 
+  @ManyToMany(type => AuthorEntity)
+  @JoinTable()
+  authors : AuthorEntity[]
+  
   @ManyToOne(
-    type => AuthorEntity,
-    author => author.book,
+    type => CategoryEntity,
+    category => category.book,
   )
-  authors: AuthorEntity;
+  categories: CategoryEntity[];
 }
