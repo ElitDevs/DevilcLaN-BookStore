@@ -1,30 +1,36 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany, ManyToOne } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+  ManyToOne,
+} from 'typeorm';
 import { AuthorEntity } from 'src/author/author.entity';
-
 
 @Entity('Book')
 export class BookEntity {
   @PrimaryGeneratedColumn('uuid') id: string;
 
-  @Column("varchar") bookname: string;
+  @Column('varchar') bookname: string;
 
   @Column() bookpages: number;
 
-  @Column({type: "varchar", unique: true}) bookisbn: string;
- 
-  @Column()  bookprice: number;
+  @Column({ type: 'varchar', unique: true }) bookisbn: string;
 
-  @Column({type : "varchar", nullable : true})  bookpicture: string;
+  @Column() bookprice: number;
 
-  @Column({nullable : true}) bookqauntity: number;
+  @Column({ type: 'varchar', nullable: true }) bookpicture: string;
 
-  @CreateDateColumn() createdAt : Date;
+  @Column({ nullable: true }) bookqauntity: number;
 
-  @UpdateDateColumn() updatedAt : Date;
+  @CreateDateColumn() createdAt: Date;
 
+  @UpdateDateColumn() updatedAt: Date;
 
-  @ManyToOne(type=>AuthorEntity , author=>author.book)
-  authors : AuthorEntity
- 
- 
+  @ManyToOne(
+    type => AuthorEntity,
+    author => author.book,
+  )
+  authors: AuthorEntity;
 }

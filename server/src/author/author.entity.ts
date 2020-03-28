@@ -4,11 +4,10 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToOne,
-  OneToMany,
+  OneToMany
 } from 'typeorm';
 import { BookEntity } from './../book/book.entity';
-import { type } from 'os';
+
 
 @Entity('Author')
 export class AuthorEntity {
