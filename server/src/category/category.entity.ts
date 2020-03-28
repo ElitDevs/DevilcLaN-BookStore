@@ -10,7 +10,7 @@ import {
 export class CategoryEntity {
   @PrimaryGeneratedColumn() id: number;
 
-  @Column() categoryname: string;
+  @Column("varchar") categoryname: string;
 
   @CreateDateColumn() createdAt: Date;
 

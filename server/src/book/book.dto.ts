@@ -15,5 +15,5 @@ export class BookDto {
   @IsString()
   bookpicture: string;
   @IsNumber()
-  bookquntity: number;
+  bookqauntity: number;
 }

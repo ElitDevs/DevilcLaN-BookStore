@@ -4,17 +4,17 @@ import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateCol
 export class BookEntity {
   @PrimaryGeneratedColumn('uuid') id: string;
 
-  @Column() bookname: string;
+  @Column("varchar") bookname: string;
 
   @Column() bookpages: number;
 
-  @Column() bookisbn: string;
+  @Column("varchar") bookisbn: string;
  
   @Column()  bookprice: number;
 
-  @Column()  bookpicture: string;
+  @Column("varchar")  bookpicture: string;
 
-  @Column() bookquntity: number;
+  @Column() bookqauntity: number;
 
   @CreateDateColumn() createdAt : Date;
 
