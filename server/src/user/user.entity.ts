@@ -4,7 +4,9 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
+import { BookEntity } from 'src/book/book.entity';
 
 @Entity('User')
 export class UserEntity {
@@ -69,4 +71,8 @@ export class UserEntity {
   @CreateDateColumn() createdAt: Date;
 
   @UpdateDateColumn() updatedAt: Date;
+
+
+  @OneToMany(type=>BookEntity , book=>book.users)
+  book : BookEntity[]
 }

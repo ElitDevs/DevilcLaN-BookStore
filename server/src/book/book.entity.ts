@@ -11,6 +11,7 @@ import {
 import { AuthorEntity } from 'src/author/author.entity';
 import { type } from 'os';
 import { CategoryEntity } from './../category/category.entity';
+import { UserEntity } from 'src/user/user.entity';
 
 @Entity('Book')
 export class BookEntity {
@@ -41,4 +42,8 @@ export class BookEntity {
     category => category.book,
   )
   categories: CategoryEntity[];
+
+
+  @ManyToOne(type=>UserEntity, user=>user.book)
+  users : UserEntity
 }
