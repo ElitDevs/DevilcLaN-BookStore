@@ -5,9 +5,10 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToMany,
+  BeforeInsert,
 } from 'typeorm';
 import { BookEntity } from 'src/book/book.entity';
-
+import * as bcrypt from 'bcryptjs';
 @Entity('User')
 export class UserEntity {
   @PrimaryGeneratedColumn() id: number;
@@ -72,7 +73,18 @@ export class UserEntity {
 
   @UpdateDateColumn() updatedAt: Date;
 
+  @OneToMany(
+    type => BookEntity,
+    book => book.users,
+  )
+  book: BookEntity[];
 
-  @OneToMany(type=>BookEntity , book=>book.users)
-  book : BookEntity[]
+  @BeforeInsert()
+  async hashPassword() {
+    this.password = await bcrypt.hash(this.password, 10);
+  }
+
+  async comparePassword(attempt: string) {
+    return await bcrypt.compare(attempt, this.password);
+  }
 }
