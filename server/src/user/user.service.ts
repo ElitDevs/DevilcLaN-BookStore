@@ -17,8 +17,8 @@ export class UserService {
     return await this.userRepository.find();
   }
 
-  async read(id: number): Promise<UserEntity> {
-    return await this.userRepository.findOne({ id });
+  async read(username: string): Promise<UserEntity | undefined> {
+    return await this.userRepository.findOne({ username });
   }
 
   async create(data: Partial<UserDto>): Promise<UserEntity> {

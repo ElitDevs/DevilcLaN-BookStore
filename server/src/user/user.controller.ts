@@ -22,8 +22,8 @@ export class UserController {
   }
 
   @Get(':id')
-  getOne(@Param('id') id: number) {
-    return this.userService.read(id);
+  getOne(@Param('username') username: string) {
+    return this.userService.read(username);
   }
 
   @Post()
