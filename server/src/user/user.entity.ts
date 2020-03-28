@@ -59,7 +59,7 @@ export class UserEntity {
 
   @Column({
     type: 'varchar',
-    nullable: false,
+    nullable: true,
   })
   address: string;
 

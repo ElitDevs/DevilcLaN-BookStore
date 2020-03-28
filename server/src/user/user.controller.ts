@@ -7,9 +7,12 @@ import {
   Delete,
   Param,
   Body,
+  UseGuards,
+  Request,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserDto } from './user.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('api/users')
 export class UserController {
@@ -26,9 +29,19 @@ export class UserController {
     return this.userService.read(username);
   }
 
-  @Post()
-  post(@Body() data: Partial<UserDto>) {
+  /**
+   * sign up route
+   * @param data
+   */
+  @Post('signup')
+  signup(@Body() data: Partial<UserDto>) {
     return this.userService.create(data);
+  }
+
+  @UseGuards(AuthGuard('local'))
+  @Post('login')
+  login(@Request() req) {
+    return req.user;
   }
 
   @Put(':id')
