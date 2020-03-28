@@ -14,11 +14,11 @@ export class AuthorEntity {
 
   @Column("varchar") lastname: string;
 
-  @Column() birthdate: Date;
+  @Column({nullable : true}) birthdate: Date;
 
-  @Column('text') authorbio: string;
+  @Column({type : 'text' , nullable: true}) authorbio: string;
 
-  @Column("varchar") authorpicture: string;
+  @Column({type : "varchar", nullable: true}) authorpicture: string;
 
   @CreateDateColumn() createdAt: Date;
 

@@ -8,13 +8,13 @@ export class BookEntity {
 
   @Column() bookpages: number;
 
-  @Column("varchar") bookisbn: string;
+  @Column({type: "varchar", unique: true}) bookisbn: string;
  
   @Column()  bookprice: number;
 
-  @Column("varchar")  bookpicture: string;
+  @Column({type : "varchar", nullable : true})  bookpicture: string;
 
-  @Column() bookqauntity: number;
+  @Column({nullable : true}) bookqauntity: number;
 
   @CreateDateColumn() createdAt : Date;
 
