@@ -21,7 +21,7 @@ export class AuthorService {
     return await this.authorRepository.findOne({ id });
   }
 
-  async create(data: AuthorDto): Promise<AuthorEntity> {
+  async create(data: Partial<AuthorDto>): Promise<AuthorEntity> {
     const author = await this.authorRepository.create({ ...data });
     return await this.authorRepository.save(author);
   }

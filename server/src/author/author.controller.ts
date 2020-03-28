@@ -29,13 +29,13 @@ export class AuthorController {
   }
 
   @Post()
-  post(@Body() data: AuthorDto) {
+  post(@Body() data: Partial<AuthorDto>) {
     this.logger.log(JSON.stringify(data));
     return this.authorService.create(data);
   }
 
   @Put(':id')
-  put(@Param('id') id: string, @Body() data: AuthorDto) {
+  put(@Param('id') id: string, @Body() data: Partial<AuthorDto>) {
     this.logger.log(JSON.stringify(data));
     return this.authorService.update(id, data);
   }

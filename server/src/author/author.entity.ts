@@ -10,15 +10,15 @@ import {
 export class AuthorEntity {
   @PrimaryGeneratedColumn('uuid') id: string;
 
-  @Column() firstname: string;
+  @Column('text') firstname: string;
 
-  @Column() lastname: string;
+  @Column('text') lastname: string;
 
   @Column() birthdate: Date;
 
-  @Column() authorbio: string;
+  @Column('text') authorbio: string;
 
-  @Column() authorpicture: string;
+  @Column('text') authorpicture: string;
 
   @CreateDateColumn() createdAt: Date;
 
