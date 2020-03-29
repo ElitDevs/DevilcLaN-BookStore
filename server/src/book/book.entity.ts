@@ -35,15 +35,15 @@ export class BookEntity {
 
   @ManyToMany(type => AuthorEntity)
   @JoinTable()
-  authors : AuthorEntity[]
-  
+  authors: AuthorEntity[];
+
+  @ManyToMany(type => UserEntity)
+  @JoinTable()
+  users: UserEntity[];
+
   @ManyToOne(
     type => CategoryEntity,
     category => category.book,
   )
   categories: CategoryEntity[];
-
-
-  @ManyToOne(type=>UserEntity, user=>user.book)
-  users : UserEntity
 }
