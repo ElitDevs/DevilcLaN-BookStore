@@ -13,6 +13,7 @@ import {
 import { UserService } from './user.service';
 import { UserDto } from './user.dto';
 import { AuthGuard } from '@nestjs/passport';
+import { LocalAuthGuard } from 'src/auth/local-auth.guard';
 
 @Controller('api/users')
 export class UserController {
@@ -38,7 +39,7 @@ export class UserController {
     return this.userService.create(data);
   }
 
-  @UseGuards(AuthGuard(Local))
+  @UseGuards(LocalAuthGuard)
   @Post('login')
   login(@Request() req) {
     return req.user;
