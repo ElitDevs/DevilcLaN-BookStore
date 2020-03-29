@@ -73,12 +73,6 @@ export class UserEntity {
 
   @UpdateDateColumn() updatedAt: Date;
 
-  @OneToMany(
-    type => BookEntity,
-    book => book.users,
-  )
-  book: BookEntity[];
-
   @BeforeInsert()
   async hashPassword() {
     this.password = await bcrypt.hash(this.password, 10);
