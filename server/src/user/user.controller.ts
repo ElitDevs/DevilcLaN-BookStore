@@ -38,7 +38,7 @@ export class UserController {
     return this.userService.create(data);
   }
 
-  @UseGuards(AuthGuard('local'))
+  @UseGuards(AuthGuard(Local))
   @Post('login')
   login(@Request() req) {
     return req.user;
