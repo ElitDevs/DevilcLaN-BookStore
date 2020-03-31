@@ -12,13 +12,18 @@ import {
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserDto } from './user.dto';
-import { AuthGuard } from '@nestjs/passport';
-import { LocalAuthGuard } from 'src/auth/local-auth.guard';
+
+import { LocalAuthGuard } from './../auth/local-auth.guard';
+import { AuthService } from './../auth/auth.service';
 
 @Controller('api/users')
 export class UserController {
   private logger = new Logger('User Controller');
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+
+    private authService: AuthService,
+  ) {}
 
   @Get()
   getAll() {
@@ -42,7 +47,8 @@ export class UserController {
   @UseGuards(LocalAuthGuard)
   @Post('login')
   login(@Request() req) {
-    return req.user;
+    // return req;
+    return this.authService.login(req.user);
   }
 
   @Put(':id')
