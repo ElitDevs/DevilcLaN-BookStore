@@ -21,7 +21,6 @@ export class UserController {
   private logger = new Logger('User Controller');
   constructor(
     private userService: UserService,
-
     private authService: AuthService,
   ) {}
 
@@ -41,13 +40,13 @@ export class UserController {
    */
   @Post('signup')
   signup(@Body() data: Partial<UserDto>) {
+    console.log('je suis la ');
     return this.userService.create(data);
   }
 
   @UseGuards(LocalAuthGuard)
   @Post('login')
   login(@Request() req) {
-    // return req;
     return this.authService.login(req.user);
   }
 

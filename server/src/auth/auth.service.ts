@@ -14,16 +14,15 @@ export class AuthService {
     if (user && (await user.comparePassword(password))) {
       const { id, username } = user;
       return { id, username };
-      //   const { password, ...result } = user;
-      //   return result;
     }
     return null;
   }
 
   async login(user: any) {
+    console.log('payload is : ', user);
     const payload = { username: user.username, sub: user.id };
     return {
-      accesstoken: this.jwtService.sign(payload),
+      accessToken: this.jwtService.sign(payload),
     };
   }
 }

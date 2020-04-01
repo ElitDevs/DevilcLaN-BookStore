@@ -5,7 +5,7 @@ the backend server side
 ## Installation
 
 ```bash
-$ npm install
+$ npm install or yarn
 ```
 
 ## Running the app
@@ -15,7 +15,7 @@ $ npm install
 $ npm run start
 
 # watch mode
-$ npm run start:dev
+$ npm run start:dev || yarn start:dev
 
 # production mode
 $ npm run start:prod
