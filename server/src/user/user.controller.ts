@@ -9,12 +9,15 @@ import {
   Body,
   UseGuards,
   Request,
+  HttpException,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserDto } from './user.dto';
 
 import { LocalAuthGuard } from './../auth/local-auth.guard';
 import { AuthService } from './../auth/auth.service';
+import { JwtAuthGuard } from './../auth/jwt-auth.guard';
 
 @Controller('api/users')
 export class UserController {
@@ -29,10 +32,10 @@ export class UserController {
     return this.userService.findAll();
   }
 
-  @Get(':id')
-  getOne(@Param('username') username: string) {
-    return this.userService.read(username);
-  }
+  // @Get(':id')
+  // getOne(@Param('username') username: string) {
+  //   return this.userService.read(username);
+  // }
 
   /**
    * sign up route
@@ -47,8 +50,15 @@ export class UserController {
   @UseGuards(LocalAuthGuard)
   @Post('login')
   login(@Request() req) {
-    console.log(req);
+    // console.log(req);
     return this.authService.login(req.user);
+  }
+
+  // this method to test jwt is working
+  @UseGuards(JwtAuthGuard)
+  @Get('profile')
+  get(@Request() req) {
+    return req.user;
   }
 
   @Put(':id')
