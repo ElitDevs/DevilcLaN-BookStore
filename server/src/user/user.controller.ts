@@ -27,15 +27,17 @@ export class UserController {
     private authService: AuthService,
   ) {}
 
+  @UseGuards(JwtAuthGuard)
   @Get()
   getAll() {
     return this.userService.findAll();
   }
 
-  // @Get(':id')
-  // getOne(@Param('username') username: string) {
-  //   return this.userService.read(username);
-  // }
+  @UseGuards(JwtAuthGuard)
+  @Get(':id')
+  getOne(@Param('username') username: string) {
+    return this.userService.read(username);
+  }
 
   /**
    * sign up route
@@ -55,17 +57,17 @@ export class UserController {
   }
 
   // this method to test jwt is working
+  // @UseGuards(JwtAuthGuard)
+  // @Get('profile')
+  // get(@Request() req) {
+  //   return req.user;
+  // }
   @UseGuards(JwtAuthGuard)
-  @Get('profile')
-  get(@Request() req) {
-    return req.user;
-  }
-
   @Put(':id')
   put(@Param('id') id: number, data: Partial<UserDto>) {
     return this.userService.update(id, data);
   }
-
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   destroy(@Param('id') id: number) {
     return this.userService.delete(id);
