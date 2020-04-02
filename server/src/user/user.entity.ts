@@ -4,10 +4,9 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  OneToMany,
   BeforeInsert,
 } from 'typeorm';
-import { BookEntity } from 'src/book/book.entity';
+
 import * as bcrypt from 'bcryptjs';
 @Entity('User')
 export class UserEntity {

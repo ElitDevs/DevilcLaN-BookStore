@@ -9,7 +9,6 @@ import {
   JoinTable,
 } from 'typeorm';
 import { AuthorEntity } from 'src/author/author.entity';
-import { type } from 'os';
 import { CategoryEntity } from './../category/category.entity';
 import { UserEntity } from 'src/user/user.entity';
 

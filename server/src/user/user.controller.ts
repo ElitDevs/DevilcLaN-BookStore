@@ -9,8 +9,6 @@ import {
   Body,
   UseGuards,
   Request,
-  HttpException,
-  UnauthorizedException,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserDto } from './user.dto';
