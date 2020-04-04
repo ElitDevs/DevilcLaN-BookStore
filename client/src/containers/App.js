@@ -1,9 +1,11 @@
 import React from "react";
+import Register from '../components/register'
+
 
 function App() {
   return (
     <div className="App">
-      <h1>hello Baraka Larbi</h1>
+       <Register/>
     </div>
   );
 }
