@@ -56,7 +56,7 @@ export class BookController {
   @Put(':id')
   put(@Param('id') id: string, @Body() data: Partial<BookDto>) {
     this.logger.log(JSON.stringify(data));
-    return this.bookService.update(id, data)
+    return this.bookService.update(id, data);
   }
 
   /**
@@ -67,6 +67,6 @@ export class BookController {
   @Delete(':id')
   destroy(@Param('id') id: string) {
     this.logger.log(JSON.stringify(id));
-    return  this.bookService.remove(id)
+    return this.bookService.remove(id);
   }
 }

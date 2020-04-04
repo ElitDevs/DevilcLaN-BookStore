@@ -1,8 +1,9 @@
 import { IsString, IsNumber } from 'class-validator';
 /**
  * @class BookDto
- * 
- */ 
+ *
+ */
+
 export class BookDto {
   @IsString()
   bookname: string;
@@ -17,3 +18,14 @@ export class BookDto {
   @IsNumber()
   bookqauntity: number;
 }
+
+// export class BookRo {
+//   id?: string;
+//   bookname: string;
+//   bookpages: string;
+//   bookisbn: string;
+//   bookprice: number;
+//   bookpicture: string;
+//   bookqauntity: string;
+
+// }
