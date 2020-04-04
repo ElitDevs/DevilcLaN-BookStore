@@ -27,10 +27,13 @@ export class BookService {
     if (!book) {
       throw new HttpException('Not Found', HttpStatus.BAD_REQUEST);
     }
-    return await this.bookRepository.findOne({ id });
+    return await this.bookRepository.findOne({
+      where: { id },
+      relations: ['authors', 'categories'],
+    });
   }
 
-  async create(data): Promise<BookEntity> {
+  async create(data: Partial<BookDto>): Promise<BookEntity> {
     const authors: AuthorEntity[] = await this.authorRepository.findByIds(
       data.authors,
     );
@@ -51,11 +54,28 @@ export class BookService {
   }
 
   async update(id: string, data: Partial<BookDto>): Promise<BookEntity> {
-    const book = await this.bookRepository.findOne({ id });
+    const book = await this.bookRepository.findOne({
+      where: { id },
+      relations: ['authors', 'categories'],
+    });
     if (!book) {
       throw new HttpException('Not Found', HttpStatus.BAD_REQUEST);
     }
-    await this.bookRepository.update({ id }, data);
+    //this method checks if id exist and dont return false;
+    const authors: AuthorEntity[] = await this.authorRepository.findByIds(
+      data.authors,
+    );
+
+    book.bookname = data.bookname;
+    book.bookname = data.bookname;
+    book.bookpages = data.bookpages;
+    book.bookisbn = data.bookisbn;
+    book.bookprice = data.bookprice;
+    book.bookpicture = data.bookpicture;
+    book.bookqauntity = data.bookqauntity;
+    book.categories = data.category;
+    book.authors = authors;
+    await this.bookRepository.save(book);
     return book;
   }
 
