@@ -42,7 +42,7 @@ export class BookController {
    * @param data
    */
   @Post()
-  post(@Body() data: BookDto) {
+  post(@Body() data) {
     this.logger.log(JSON.stringify(data));
     return this.bookService.create(data);
   }

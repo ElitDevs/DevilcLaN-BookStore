@@ -8,9 +8,10 @@ import {
   ManyToMany,
   JoinTable,
 } from 'typeorm';
-import { AuthorEntity } from 'src/author/author.entity';
+
 import { CategoryEntity } from './../category/category.entity';
 import { UserEntity } from 'src/user/user.entity';
+import { AuthorEntity } from './../author/author.entity';
 
 @Entity('Book')
 export class BookEntity {
@@ -32,9 +33,19 @@ export class BookEntity {
 
   @UpdateDateColumn() updatedAt: Date;
 
-  @ManyToMany(type => AuthorEntity)
+  // @ManyToMany(type => AuthorEntity)
+  // @JoinTable()
+  // written: AuthorEntity[];
+
+  @ManyToMany(
+    type => AuthorEntity,
+    author => author.books,
+    {
+      cascade: true,
+    },
+  )
   @JoinTable()
-  written: AuthorEntity[];
+  authors: AuthorEntity[];
 
   @ManyToMany(type => UserEntity)
   @JoinTable()
